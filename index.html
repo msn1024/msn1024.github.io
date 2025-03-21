@@ -1,0 +1,526 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的搜索</title>
+   	<link rel="shortcut icon" href="favico.ico"/>
+   	
+	  <style>
+	  
+body{
+    /* background: #494A5F; 
+	  font-family: 'Microsoft YaHei UI',arial,sans-serif;
+    font-size: 13px;*/
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+#logo{
+    width: 280px;
+    height: 100px;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#search-bar{
+    margin-top: 25px;
+    width: 320px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#search-bar input {
+    width: 300px;
+    height: 24px;
+    padding: 9px 10px;
+	font-family: 'Microsoft YaHei UI',arial,sans-serif;
+    font-size: 15px;
+    color: #555;
+    border: none;
+    background: #f9f0da;
+    overflow: hidden;
+    outline:none;
+    vertical-align: middle;
+    box-shadow: 1px 1px 3px rgb(160,160,160);
+	border-radius: 2px;
+}
+
+#search-bar button {
+	margin-top: 20px;
+	margin-left: 0px;
+    width: 60px;
+    height: 35px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 15px;
+	font-weight: bold;
+	color: rgb(100,100,100);
+    border: none;
+    overflow: hidden;
+    vertical-align: middle;
+    outline: none;
+    cursor: pointer;
+	border-radius: 2px;
+    background-color: rgb(255,255,255);
+    box-shadow: 0px 0px 1px rgb(160,160,160);
+}
+
+#search-bar button:hover{
+    background-color: rgb(240,240,240);
+    box-shadow: 0px 0px 3px rgb(160,160,160);
+}
+
+#nav-panel{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 350px;
+    height: 180px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: auto;
+    padding-top: 10px;
+    <!---background-color: #F5F5F5;--->
+    <!---border: 1px solid rgb(210,210,210);--->
+}
+
+.nav-panel-line{
+    clear: both;
+    width: 400px;
+    height:1px;
+    background-color: #F0F0F0;
+}
+
+.nav-panel-item {
+    float: left;
+    display: block;
+    height: 40px;
+    width: 60px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    color: #000;
+}
+
+.nav-panel-item:hover
+{
+    background-color: #F7F7F7;
+}
+
+.nav-panel-item-img{
+    float: left;
+    margin-top: 12px;
+    margin-left: 15px;
+}/* 带边框 */
+
+.nav-panel-item-txt {
+    float: middle;
+    margin-left: 5px;
+    line-height: 40px;
+    height: 40px;
+    font-size: 13px;
+    text-align:center;
+}
+
+        .container {
+            max-width: 350px;
+            margin: 0 auto;
+            padding: 5px;
+        }
+        .container1 {
+            max-width: 800px; /* 带边框 */
+            margin: 0 auto;
+            padding: 5px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .category {
+            margin-bottom: 5px;
+        }
+        .category h2 {
+            margin: 0 0 10px 0;
+            font-size: 12px;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .category h2::after {
+            content: "▼";
+            margin-left: 10px;
+            font-size: 16px;
+            transition: transform 0.3s;
+        }
+        .category h2.collapsed::after {
+            transform: rotate(-90deg);
+        }
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .link1 {
+            width: calc(25% - 10px); /* 每行显示4个链接 */
+            padding: 10px;
+            background-color: #f5f5f5;  /* 蓝0073e6;绿28a745;红ff4d4d;蓝005bb5; */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .link {
+            background-color: #0073e6;  /* 背景色为深蓝色（0073e6类似企业级配色） 绿28a745;红ff4d4d;蓝005bb5;  */
+            color: #fff;  /* fff文字颜色为纯白 */
+            border: none; /* 无边框（移除默认边框） */
+            padding: 5px 10px;  /* 内边距：上下5px，左右10px */
+            border-radius: 3px; /* 圆角3像素（轻微圆润效果） */
+            cursor: pointer;  /* 鼠标悬停时显示手型指针（提示可点击） */
+            font-size: 12px;
+            text-align: center;
+            margin-left: 5px; /* 左侧外间距5px（与其他元素保持间隔） */
+            margin-bottom: 5px; /* 下侧外间距5px（与其他元素保持间隔） */
+        }
+        .link a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 14px;
+        }
+        .link a:hover {
+            text-decoration: underline;
+        }
+        .hidden {
+            display: none;
+        }
+
+
+	</style>
+    <script>
+        //LISTEN ENTER KEYDOWN EVENT
+        document.onkeydown = function(e){
+            if(!e){
+                e = window.event;
+            }
+            if((e.keyCode || e.which) == 13){
+                do_search();
+            }
+        }
+
+        //DO SEARCH EVENT
+
+		<!--
+        //function do_baidu_search() {
+        //    var search_txt = document.getElementById("search-bar-input").value;
+		//以下4行:如果输入框不输入搜索词，弹窗提示
+        //    if (search_txt == "") {
+        //        alert("请输入关键词 ! ");
+        //        return false;
+        //    }
+		//以上4行，不需要弹窗，不输入搜索词，点击按钮直接进入相应网站
+        //    var search_url = "https://www.baidu.com/s?wd=" + search_txt;
+        //    window.open(search_url);
+        //}
+		-->
+		
+        function do_baidu_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://www.baidu.com/s?wd=" + search_txt;
+            window.open(search_url);
+        }
+        function do_google_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://www.google.com/search?newwindow=1&hl=zh-CN&q=" + search_txt;
+            window.open(search_url);
+        }
+        function do_Bing_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://cn.bing.com/search?q=" + search_txt;
+            window.open(search_url);
+        }
+        function do_sogou_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://www.sogou.com/web?query=" + search_txt;
+            window.open(search_url);
+        }
+        function do_shenma_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://yz.m.sm.cn/s?q=" + search_txt;
+            window.open(search_url);
+        }		
+        function do_360_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://www.so.com/s?q=" + search_txt;
+            window.open(search_url);
+        }
+        function do_taobao_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://s.taobao.com/search?q=" + search_txt;
+            window.open(search_url);
+        }
+        function do_zhihu_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://www.zhihu.com/search?type=content&q=" + search_txt;
+            window.open(search_url);
+        }		
+        function do_doubai_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://www.douban.com/search?q=" + search_txt;
+            window.open(search_url);
+        }
+        function do_weixin_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "http://weixin.sogou.com/weixin?type=2&query=" + search_txt;
+            window.open(search_url);
+        }
+        function do_weibo_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "http://s.weibo.com/weibo/" + search_txt;
+            window.open(search_url);
+        }
+        function do_v2ex_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://www.baidu.com/s?wd=site:v2ex.com%20" + search_txt;
+            window.open(search_url);
+        }
+        function do_github_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://github.com/search?q=" + search_txt;
+            window.open(search_url);
+        }
+        function do_feng_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://cn.bing.com/search?wd=site:bbs.feng.com%20" + search_txt;
+            window.open(search_url);
+        }
+        function do_CSDN_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://so.csdn.net/so/search/s.do?q=" + search_txt;
+            window.open(search_url);
+        }
+        function do_gfan_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "http://bbs.gfan.com/search?q=" + search_txt;
+            window.open(search_url);
+        }
+        function do_taobaoH5_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://s.m.taobao.com/h5?q=" + search_txt;
+            window.open(search_url);
+        }
+        function do_sourceforge_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+            var search_url = "https://sourceforge.net/directory/?q=" + search_txt;
+            window.open(search_url);
+        }
+        function do_Yandex_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+            var search_url = "https://yandex.com/search/?text=" + search_txt;
+            window.open(search_url);
+        }
+        function do_4pda_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+            var search_url = "https://4pda.ru/forum/index.php?act=search&query=" + search_txt + "&username=&forums%5B%5D=all&subforums=1&source=all&sort=rel&result=posts";
+            window.open(search_url);
+        }
+        function do_mydigit_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+            var search_url = "https://cn.bing.com/search?q=" + search_txt + " site:mydigit.cn";
+            window.open(search_url);
+        }      
+		function on_enter_key(){
+			if (event.keyCode==13){
+				var search_txt = document.getElementById("search-bar-input").value;
+		//		if (search_txt == "") {
+		//			alert("请输入搜索词 ! ");
+		//			return false;
+		//		}
+				var search_url = "https://www.baidu.com/s?wd=" + search_txt;
+				window.open(search_url);
+			}
+		}
+    </script>
+</head>
+<body>
+<!------------
+<div id="logo">
+    <img src="https://m.baidu.com/static/index/plus/plus_logo_web.png"  alt="tojohnonly">
+</div>
+
+-------------->
+
+<div id="search-bar">
+  <input id="search-bar-input"  onkeydown="on_enter_key()" type="text" placeholder="早睡早起 ..." autocomplete="off"></BR></BR>
+    <button onclick="do_google_search()">google</button><a class="close"></a>
+    <button onclick="do_sogou_search()">搜狗</button><a class="close"></a>
+	<button onclick="do_360_search()">360</button><a class="close"></a>
+	<button onclick="do_Bing_search()">Bing</button><a class="close"></a>
+	<button onclick="do_baidu_search()">百度</button><a class="close"></a>
+	<button onclick="do_weixin_search()">微信</button><a class="close"></a>
+	<button onclick="do_weibo_search()">微博</button><a class="close"></a>
+	<button onclick="do_zhihu_search()">知乎</button><a class="close"></a>
+	<button onclick="do_doubai_search()">豆瓣</button><a class="close"></a>
+    <button onclick="do_shenma_search()">神马</button><a class="close"></a>
+	<button onclick="do_feng_search()">威锋</button><a class="close"></a>
+	<button onclick="do_gfan_search()">机锋</button><a class="close"></a>
+	<button onclick="do_CSDN_search()">CSDN</button><a class="close"></a>
+	<button onclick="do_github_search()">GitHub</button><a class="close"></a>
+    <button onclick="do_v2ex_search()">V2EX</button><a class="close"></a> 
+    <button onclick="do_taobaoH5_search()">淘宝</button><a class="close"></a> 
+    <button onclick="do_sourceforge_search()">SOURCEFORGE</button><a class="close"></a>
+    <button onclick="do_Yandex_search()">Yandex</button><a class="close"></a>
+    <button onclick="do_4pda_search()">4PDA</button><a class="close"></a>
+    <button onclick="do_mydigit_search()">数码家</button><a class="close"></a>
+</div>
+
+
+<!------------
+
+<div id="nav-panel">
+      <a class="nav-panel-item" title="百度翻译" href="https://fanyi.baidu.com/" target="_blank"><div class="nav-panel-item-txt">百度翻译</div></a>
+      <a class="nav-panel-item" title="淘宝" href="https://s.taobao.com/" target="_blank"><div class="nav-panel-item-txt">淘宝</div></a>
+      <a class="nav-panel-item" title="有道" href="http://dict.youdao.com/" target="_blank"><div class="nav-panel-item-txt">有道</div></a>
+      <a class="nav-panel-item" title="ithome" href="https://wap.ithome.com/" target="_blank"><div class="nav-panel-item-txt">ithome</div></a>
+   ,  <a class="nav-panel-item" title="iFanr" href="http://www.ifanr.com/" target="_blank"><div class="nav-panel-item-txt">iFanr</div></a>
+      <a class="nav-panel-item" title="TheVerge" href="https://www.theverge.com/" target="_blank"><div class="nav-panel-item-txt">TheVerge</div></a>
+      <a class="nav-panel-item" title="小众软件" href="https://www.appinn.com/" target="_blank"><div class="nav-panel-item-txt">小众</div></a>
+      <a class="nav-panel-item" title="oschina" href="http://tool.oschina.net/" target="_blank"><div class="nav-panel-item-txt">工具</div></a>
+      <a class="nav-panel-item" title="蓝点导航" href="https://nav.wsoso.com/" target="_blank"><div class="nav-panel-item-txt">蓝点</div></a>
+	  <a class="nav-panel-item" title="网站" href="http://w.li01.ren:3000/" target="_blank"><div class="nav-panel-item-txt">网站</div></a>
+	  <a class="nav-panel-item" title="酷安市场" href="https://www.coolapk.com/apk/" target="_blank"><div class="nav-panel-item-txt">酷安</div></a>
+	  <a class="nav-panel-item" title="百度风云榜" href="http://top.baidu.com/" target="_blank"><div class="nav-panel-item-txt">风云榜</div></a>
+	  <a class="nav-panel-item" title="今日热榜" href="https://tophub.today/" target="_blank"><div class="nav-panel-item-txt">今日热榜</div></a>
+	  <a class="nav-panel-item" title="淘宝h5" href="https://h5.m.taobao.com/" target="_blank"><div class="nav-panel-item-txt">淘宝h5</div></a>
+	  <a class="nav-panel-item" title="剪贴板" href="https://note.ms/15qq25" target="_blank"><div class="nav-panel-item-txt">剪贴板</div></a>
+	  <a class="nav-panel-item" title="其它" href="/qt.html" target="_blank"><div class="nav-panel-item-txt">其它</div></a>
+      <a class="nav-panel-item" title="其它" href="https://coding-pages-bucket-489242-1378169-8232-422291-1258452710.cos-website.ap-shanghai.myqcloud.com/so.html" target="_blank"><div class="nav-panel-item-txt">搜索</div></a>
+      <a class="nav-panel-item" title="龙轩导航" href="http://m.ilxdh.com/" target="_blank"><div class="nav-panel-item-txt">龙轩导航</div></a>
+      <a class="nav-panel-item" title="不死鸟导航" href="https://iao.su/909/" target="_blank"><div class="nav-panel-item-txt">不死鸟</div></a>
+</div>
+
+-------------->
+
+<div class="container">
+
+    <div class="category">
+        <h2 onclick="toggleCategory(this)">导航</h2>
+        <div class="links">
+            <div class="link"><a href="https://iui.su/3700" target="_blank">资源导航</A></div>
+            <div class="link"><a href="https://nav.wsoso.com/" target="_blank">蓝点</a></div>
+            <div class="link"><a href="http://w.li01.ren:3000/" target="_blank">网站</a></div>
+            <div class="link"><a href="http://top.baidu.com/" target="_blank">风云榜</a></div>
+            <div class="link"><a href="https://tophub.today/" target="_blank">今日热榜</a></div>
+            <div class="link"><a href="http://m.ilxdh.com/" target="_blank">龙轩导航</a></div>
+            <div class="link"><a href="https://iao.su/909/" target="_blank">不死鸟</a></div>
+            <div class="link hidden"><a href="https://www.yandex.com" target="_blank">Yandex</a></div>
+        </div>
+    </div>
+    
+    <div class="category">
+        <h2 onclick="toggleCategory(this)">搜索引擎</h2>
+        <div class="links">
+            <div class="link"><a href="https://fanyi.baidu.com/" target="_blank">百度翻译</a></div>
+            <div class="link"><a href="https://fanyi.caiyunapp.com/" target="_blank">彩云翻译</a></div>
+            <div class="link"><a href="https://fanyi.sogou.com/" target="_blank">搜狐翻译</a></div>
+            <div class="link"><a href="https://translate.yandex.com/?source_lang=en&target_lang=zh" target="_blank">yandex翻译</A></div>
+            <div class="link"><a href="https://chat.scnet.cn/#/home" target="_blank">DeepSeek</A></div>
+            <div class="link"><a href="https://chat.baidu.com/deepseek?word=百度AI助手&isShowHello=1" target="_blank">百度AI</A></div>            
+            <div class="link"><a href="https://www.n.cn/" target="_blank">纳米</a></div>
+            <div class="link"><a href="https://datong.info/" target="_blank">大同</a></div>
+            <div class="link"><a href="https://www.doubao.com/chat/" target="_blank">豆包</a></div>
+            <div class="link"><a href="https://metaso.cn/" target="_blank">秘塔</a></div>
+            <div class="link"><a href="https://kaisouai.com/" target="_blank">开搜</a></div>      
+            <div class="link hidden"><a href="https://www.yandex.com" target="_blank">Yandex</a></div>
+            <div class="link"><a href="http://tool.oschina.net/" target="_blank">工具</A></div>
+            <div class="link"><a href="https://s.taobao.com/" target="_blank">淘宝</A></div>
+            <div class="link"><a href="http://dict.youdao.com/" target="_blank">有道</A></div>
+            <div class="link"><a href="https://wap.ithome.com/" target="_blank">ithome</A></div>
+            <div class="link"><a href="http://www.ifanr.com/" target="_blank">iFanr</A></div>
+            <div class="link"><a href="https://www.theverge.com/" target="_blank">TheVerge</A></div>
+            <div class="link"><a href="https://www.appinn.com/" target="_blank">小众</A></div>
+            <div class="link"><a href="https://www.coolapk.com/apk/" target="_blank">酷安</A></div>
+            <div class="link"><a href="https://h5.m.taobao.com/" target="_blank">淘宝h5</A></div>
+            <div class="link"><a href="https://note.ms/15qq25" target="_blank">剪贴板</A></div>
+            <div class="link"><a href="/qt.html" target="_blank">其它</A></div>
+            <div class="link"><a href="https://coding-pages-bucket-489242-1378169-8232-422291-1258452710.cos-website.ap-shanghai.myqcloud.com/so.html" target="_blank">搜索</A></div>
+        </div>
+    </div>
+
+    <div class="category">
+        <h2 onclick="toggleCategory(this)">社交媒体</h2>
+        <div class="links">
+            <div class="link"><a href="https://www.weibo.com" target="_blank">微博</a></div>
+            <div class="link"><a href="https://www.zhihu.com" target="_blank">知乎</a></div>
+            <div class="link"><a href="https://yandex.com/search/?text=" target="_blank">yandex图搜</A></div>
+            <div class="link hidden"><a href="https://webdata.cqccms.com.cn/webdata/query/CCCCerti.do?keyword=%E7%A7%91%E5%A4%A7%E8%AE%AF%E9%A3%9E&chaxuntype=appname&Submit=%E7%82%B9%E5%87%BB%E6%9F%A5%E8%AF%A2#" target="_blank">3C证书</A></div>
+            <div class="link"><a href="https://www.sdmap.gov.cn/tdtwx2021/index.html#/map/main" target="_blank">天地图 山东</A></div>
+            <div class="link"><a href="https://www.geamap.com/en/soviet#2/37.3/-4.9" target="_blank">GeaMap</A></div>
+            <div class="link"><a href="https://nakarte.me/#m=2/32.03583/85.36286&l=T" target="_blank">nakarte</A></div>
+            <div class="link"><a href="https://www.osgeo.cn/map/mb10c" target="_blank">各类地图</A></div>
+            <div class="link"><a href="https://online.geovisearth.com/browser" target="_blank">Earth星图地球</A></div>
+            <div class="link"><a href="https://map.qiekub.org/" target="_blank">QueerMap</A></div>
+            <div class="link"><a href="https://tracesmap.com/#2/50.6788/76.0715/normal/topo/none" target="_blank">多语言osm地图</A></div>
+            <div class="link"><a href="https://www.pansearch.me/" target="_blank">网盘搜索</A></div>
+            <div class="link"><a href="https://www.yunso.net/" target="_blank">网盘搜索 </A></div>
+            <div class="link"><a href="https://www.xuebapan.com/" target="_blank">学霸盘</A></div>
+            <div class="link"><a href="https://www.leijing.xyz/index" target="_blank">雷鲸小站</A></div>
+            <div class="link"><a href="http://hmxz.org/" target="_blank"1726844472">海绵小站天翼资源</A></div>
+            <div class="link"><a href="https://tuostudy.com/" target="_blank">图欧学习资源库</A></div>
+            <div class="link"><a href="https://www.yhcres.top/" target="_blank">萤火虫资源</A></div>
+            <div class="link"><a href="http://w.li01.ren:33004/" target="_blank">li01视频</A></div>
+            <div class="link"><a href="https://www.kdocs.cn/l/coWV4ta9zA9K" target="_blank">天翼云盘资源分享</A></div>
+            <div class="link"><a href="https://mp.weixin.qq.com/mp/homepage?search_click_id=11374589706596574486-1723133310827-9748075761&__biz=MzA4NDYzNDEwMA==&hid=31&sn=6876ea32532606dde32bb82c169dc1cf&scene=18&devicetype=android-34&version=2800315a&lang=zh_CN&nettype=WIFI&ascene=65&pass_ticket=nssP7CzOPXirCFIWlsn135WofDMV6K6sR7D7e3OYxUsOzIcRewHM09OKCdUVXEVw&wx_header=3" target="_blank">楷书入门</A></div>
+            <div class="link"><a href="https://weixin65778.video-rays.com/st/W65778/C1000008899/A1642669/special?timestamp=1724400534559" target="_blank">丽声瑞格自然拼读</A></div>
+            <div class="link"><a href="https://www.sejda.com/split-pdf-down-the-middle" target="_blank">剪裁试卷A3-A4</A></div>
+            <div class="link"><a href="https://www.mydrivers.com/zhuanti/tianti/gpu/index.html" target="_blank">桌面显卡性能天梯图</A></div>
+            <div class="link"><a href="https://rank.kkj.cn/" target="_blank"1734479877">CPU天梯榜</A></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleCategory(header) {
+        const category = header.parentElement;
+        const links = category.querySelectorAll('.link');
+        const isCollapsed = header.classList.toggle('collapsed');
+
+        // 默认显示6个链接，其余隐藏
+        links.forEach((link, index) => {
+            if (index >= 6) {
+                if (isCollapsed) {
+                    link.classList.add('hidden'); // 折叠更多链接
+                } else {
+                    link.classList.remove('hidden'); // 显示更多链接
+                }
+            }
+        });
+    }
+
+    // 默认折叠所有分类的更多链接
+    document.querySelectorAll('.category h2').forEach(header => {
+        toggleCategory(header); // 初始状态为折叠
+    });
+</script>
+</body>
+</html>
