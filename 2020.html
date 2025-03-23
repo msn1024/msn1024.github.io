@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的搜索</title>
+	<link rel="shortcut icon" href="favico.ico"/>
+	<style>
+	body{
+    background: #494A5F;
+	font-family: 'Microsoft YaHei UI',arial,sans-serif;
+    font-size: 13px;
+}
+
+#logo{
+    width: 280px;
+    height: 100px;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#search-bar{
+    margin-top: 25px;
+    width: 320px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#search-bar input {
+    width: 300px;
+    height: 24px;
+    padding: 9px 10px;
+	font-family: 'Microsoft YaHei UI',arial,sans-serif;
+    font-size: 15px;
+    color: #555;
+    border: none;
+    background: #f9f0da;
+    overflow: hidden;
+    outline:none;
+    vertical-align: middle;
+    box-shadow: 1px 1px 3px rgb(160,160,160);
+	border-radius: 2px;
+}
+
+#search-bar button {
+	margin-top: 20px;
+	margin-left: 0px;
+    width: 60px;
+    height: 35px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 15px;
+	font-weight: bold;
+	color: rgb(100,100,100);
+    border: none;
+    overflow: hidden;
+    vertical-align: middle;
+    outline: none;
+    cursor: pointer;
+	border-radius: 2px;
+    background-color: rgb(255,255,255);
+    box-shadow: 0px 0px 1px rgb(160,160,160);
+}
+
+#search-bar button:hover{
+    background-color: rgb(240,240,240);
+    box-shadow: 0px 0px 3px rgb(160,160,160);
+}
+
+#nav-panel{
+    margin-top: 20px;
+    margin-bottom: 50px;
+    width: 350px;
+    height: 205px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 30px;
+    padding-top: 10px;
+    <!---background-color: #F5F5F5;--->
+    <!---border: 1px solid rgb(210,210,210);--->
+}
+
+.nav-panel-line{
+    clear: both;
+    width: 400px;
+    height:1px;
+    background-color: #F0F0F0;
+}
+
+.nav-panel-item {
+    float: left;
+    display: block;
+    height: 40px;
+    width: 60px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    color: #000;
+}
+
+.nav-panel-item:hover
+{
+    background-color: #F7F7F7;
+}
+
+.nav-panel-item-img{
+    float: left;
+    margin-top: 12px;
+    margin-left: 15px;
+}
+
+.nav-panel-item-txt {
+    float: middle;
+    margin-left: 5px;
+    line-height: 40px;
+    height: 40px;
+}
+
+	</style>
+    <script>
+        //LISTEN ENTER KEYDOWN EVENT
+        document.onkeydown = function(e){
+            if(!e){
+                e = window.event;
+            }
+            if((e.keyCode || e.which) == 13){
+                do_search();
+            }
+        }
+
+        //DO SEARCH EVENT
+
+		<!--
+        //function do_baidu_search() {
+        //    var search_txt = document.getElementById("search-bar-input").value;
+		//以下4行:如果输入框不输入搜索词，弹窗提示
+        //    if (search_txt == "") {
+        //        alert("请输入关键词 ! ");
+        //        return false;
+        //    }
+		//以上4行，不需要弹窗，不输入搜索词，点击按钮直接进入相应网站
+        //    var search_url = "https://www.baidu.com/s?wd=" + search_txt;
+        //    window.open(search_url);
+        //}
+		-->
+		
+        function do_baidu_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://www.baidu.com/s?wd=" + search_txt;
+            window.open(search_url);
+        }
+        function do_google_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://www.google.com/search?newwindow=1&hl=zh-CN&q=" + search_txt;
+            window.open(search_url);
+        }
+        function do_Bing_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://cn.bing.com/search?q=" + search_txt;
+            window.open(search_url);
+        }
+        function do_sogou_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://www.sogou.com/web?query=" + search_txt;
+            window.open(search_url);
+        }
+        function do_shenma_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://yz.m.sm.cn/s?q=" + search_txt;
+            window.open(search_url);
+        }		
+        function do_360_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://www.so.com/s?q=" + search_txt;
+            window.open(search_url);
+        }
+        function do_taobao_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://s.taobao.com/search?q=" + search_txt;
+            window.open(search_url);
+        }
+        function do_zhihu_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://www.zhihu.com/search?type=content&q=" + search_txt;
+            window.open(search_url);
+        }		
+        function do_doubai_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://www.douban.com/search?q=" + search_txt;
+            window.open(search_url);
+        }
+        function do_weixin_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "http://weixin.sogou.com/weixin?type=2&query=" + search_txt;
+            window.open(search_url);
+        }
+        function do_weibo_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "http://s.weibo.com/weibo/" + search_txt;
+            window.open(search_url);
+        }
+        function do_v2ex_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://www.baidu.com/s?wd=site:v2ex.com%20" + search_txt;
+            window.open(search_url);
+        }
+        function do_github_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://github.com/search?q=" + search_txt;
+            window.open(search_url);
+        }
+        function do_feng_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://www.baidu.com/s?wd=site:bbs.feng.com%20" + search_txt;
+            window.open(search_url);
+        }
+        function do_CSDN_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://so.csdn.net/so/search/s.do?q=" + search_txt;
+            window.open(search_url);
+        }
+        function do_gfan_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "http://bbs.gfan.com/search?q=" + search_txt;
+            window.open(search_url);
+        }
+        function do_taobaoH5_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://s.m.taobao.com/h5?q=" + search_txt;
+            window.open(search_url);
+        }
+        function do_sourceforge_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+            var search_url = "https://sourceforge.net/directory/?q=" + search_txt;
+            window.open(search_url);
+        }
+        function do_Yandex_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+            var search_url = "https://yandex.com/search/?text=" + search_txt;
+            window.open(search_url);
+        }
+        function do_4pda_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+            var search_url = "https://4pda.ru/forum/index.php?act=search&query=" + search_txt + "&username=&forums%5B%5D=all&subforums=1&source=all&sort=rel&result=posts";
+            window.open(search_url);
+        }
+		function on_enter_key(){
+			if (event.keyCode==13){
+				var search_txt = document.getElementById("search-bar-input").value;
+		//		if (search_txt == "") {
+		//			alert("请输入搜索词 ! ");
+		//			return false;
+		//		}
+				var search_url = "https://www.baidu.com/s?wd=" + search_txt;
+				window.open(search_url);
+			}
+		}
+    </script>
+</head>
+<body>
+<!----------------------------------------------------------------------------------------------------
+
+<div id="logo">
+    <img src="https://m.baidu.com/static/index/plus/plus_logo_web.png"  alt="tojohnonly">
+</div>
+
+<!---------------------------------------------------------------------------------------------------->
+</BR>
+<div id="search-bar">
+    <input id="search-bar-input"  onkeydown="on_enter_key()" type="text" placeholder="早睡早起 ..." autocomplete="off"></BR></BR>
+  	<button onclick="do_google_search()">google</button><a class="close"></a>
+    <button onclick="do_sogou_search()">搜狗</button><a class="close"></a>
+	<button onclick="do_360_search()">360</button><a class="close"></a>
+	<button onclick="do_Bing_search()">Bing</button><a class="close"></a>
+	<button onclick="do_baidu_search()">百度</button><a class="close"></a>
+	<button onclick="do_weixin_search()">微信</button><a class="close"></a>
+	<button onclick="do_weibo_search()">微博</button><a class="close"></a>
+	<button onclick="do_zhihu_search()">知乎</button><a class="close"></a>
+	<button onclick="do_doubai_search()">豆瓣</button><a class="close"></a>
+    <button onclick="do_shenma_search()">神马</button><a class="close"></a>
+	<button onclick="do_feng_search()">威锋</button><a class="close"></a>
+	<button onclick="do_gfan_search()">机锋</button><a class="close"></a>
+	<button onclick="do_CSDN_search()">CSDN</button><a class="close"></a>
+	<button onclick="do_github_search()">GitHub</button><a class="close"></a>
+    <button onclick="do_v2ex_search()">V2EX</button><a class="close"></a> 
+    <button onclick="do_taobaoH5_search()">淘宝</button><a class="close"></a> 
+    <button onclick="do_sourceforge_search()">SOURCEFORGE</button><a class="close"></a>
+    <button onclick="do_Yandex_search()">Yandex</button><a class="close"></a>
+    <button onclick="do_4pda_search()">4PDA</button><a class="close"></a>
+</div>
+
+<!---------------------------------------------------------------------------------------------------->
+</br></br></br></br></br>
+</br></br></br></br></br>
+
+<div id="nav-panel">
+
+    <a class="nav-panel-item" title="百度翻译" href="https://fanyi.baidu.com/" target="_blank">
+    <div class="nav-panel-item-txt" style="text-align:center">百度翻译</div>
+    </a>
+
+    <a class="nav-panel-item" title="淘宝" href="https://s.taobao.com/" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">淘宝</div>
+    </a>
+
+
+
+    <a class="nav-panel-item" title="有道" href="http://dict.youdao.com/" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">有道</div>
+    </a>
+
+
+    <!----------------------------------------------2----------------------------------------------------
+    <div class="nav-panel-line" style="background-color: #d9e9f4"></div>
+-->
+    <a class="nav-panel-item" title="ithome" href="https://wap.ithome.com/" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">ithome</div>
+    </a>
+    
+	<a class="nav-panel-item" title="iFanr" href="http://www.ifanr.com/" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">iFanr</div>
+    </a>
+	
+    <a class="nav-panel-item" title="TheVerge" href="https://www.theverge.com/" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">TheVerge</div>
+    </a>
+	
+    <a class="nav-panel-item" title="小众软件" href="https://www.appinn.com/" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">小众</div>
+    </a>
+
+    <a class="nav-panel-item" title="oschina" href="http://tool.oschina.net/" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">工具</div>
+    </a>
+
+	<a class="nav-panel-item" title="用户名miku，密码随便填" href="https://miku.tools/" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">工具2</div>
+    </a>
+
+    <a class="nav-panel-item" title="蓝点导航" href="https://nav.wsoso.com/" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">蓝点</div>
+    </a>
+
+	<a class="nav-panel-item" title="网站" href="http://w.201901.top:3000/" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">网站</div>
+    </a>
+	<a class="nav-panel-item" title="酷安市场" href="https://www.coolapk.com/apk/" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">酷安</div>
+    </a>
+	<a class="nav-panel-item" title="百度风云榜" href="http://top.baidu.com/" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">风云榜</div>
+    </a>
+	<a class="nav-panel-item" title="今日热榜" href="https://tophub.today/" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">今日热榜</div>
+    </a>
+	<a class="nav-panel-item" title="摸鱼热榜" href="https://bang.duomoyu.com/" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">摸鱼热榜</div>
+    </a>	
+	<a class="nav-panel-item" title="卖家导航" href="https://maijia800.com/" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">卖家导航</div>
+    </a>
+	<a class="nav-panel-item" title="卖家大全" href="http://maijiadaquan.com/" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">卖家大全</div>
+    </a>
+	<a class="nav-panel-item" title="淘宝h5" href="https://h5.m.taobao.com/" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">淘宝h5</div>
+    </a>
+	<a class="nav-panel-item" title="磁力搜" href="https://bt.biedian.me/" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">磁力搜</div>
+    </a>
+	<a class="nav-panel-item" title="剪贴板" href="https://note.ms/15qq25" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">剪贴板</div>
+    </a>
+	<a class="nav-panel-item" title="其它" href="/qt.html" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">其它</div>
+    </a>
+    <a class="nav-panel-item" title="其它" href="https://coding-pages-bucket-489242-1378169-8232-422291-1258452710.cos-website.ap-shanghai.myqcloud.com/so.html" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">搜索</div>
+    </a>
+    <a class="nav-panel-item" title="其它" href="https://coding-pages-bucket-489242-1378169-8232-422291-1258452710.cos-website.ap-shanghai.myqcloud.com//pp.html" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">偏旁</div>
+    </a>
+    <a class="nav-panel-item" title="龙轩导航" href="http://m.ilxdh.com/" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">龙轩导航</div>
+    </a>
+    <a class="nav-panel-item" title="天翼" href="http://192.168.1.100:12381/" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">天翼</div>
+    </a>
+    <a class="nav-panel-item" title="不死鸟导航" href="https://iao.su/909/" target="_blank">
+        <div class="nav-panel-item-txt" style="text-align:center">不死鸟</div>
+    </a>
+</body>
+</html>

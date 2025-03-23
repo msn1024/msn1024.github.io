@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网址导航</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container1 {
+            max-width: 960px; /* 无边框 */
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            max-width: 960px; /* 带边框 */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .category {
+            margin-bottom: 5px;
+        }
+        .category h2 {
+            margin: 0 0 10px 0;
+            font-size: 12px;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .category h2::after {
+            content: "▼";
+            margin-left: 10px;
+            font-size: 16px;
+            transition: transform 0.3s;
+        }
+        .category h2.collapsed::after {
+            transform: rotate(-90deg);
+        }
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .link1 {
+            width: calc(25% - 10px); /* 每行显示4个链接 */
+            padding: 10px;
+            background-color: #0073e6;  /* 蓝0073e6;绿28a745;红ff4d4d;蓝005bb5; */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .link {
+            background-color: #0073e6;  /* 背景色为深蓝色（类似企业级配色） */
+            color: #fff;  /* fff文字颜色为纯白 */
+            border: none; /* 无边框（移除默认边框） */
+            padding: 5px 10px;  /* 内边距：上下5px，左右10px */
+            border-radius: 3px; /* 圆角3像素（轻微圆润效果） */
+            cursor: pointer;  /* 鼠标悬停时显示手型指针（提示可点击） */
+            font-size: 12px;
+            text-align: center;
+            margin-left: 5px; /* 左侧外间距5px（与其他元素保持间隔） */
+            margin-bottom: 5px; /* 下侧外间距5px（与其他元素保持间隔） */
+        }
+        .link a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 14px;
+        }
+        .link a:hover {
+            text-decoration: underline;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="category">
+        <h2 onclick="toggleCategory(this)">搜索引擎</h2>
+        <div class="links">
+            <div class="link"><a href="https://www.google.com" target="_blank">Google</a></div>
+            <div class="link"><a href="https://www.baidu.com" target="_blank">百度</a></div>
+            <div class="link"><a href="https://www.bing.com" target="_blank">Bing</a></div>
+            <div class="link"><a href="https://www.yahoo.com" target="_blank">Yahoo</a></div>
+            <div class="link"><a href="https://www.duckduckgo.com" target="_blank">DuckDuckGo</a></div>
+            <div class="link"><a href="https://www.sogou.com" target="_blank">搜狗</a></div>
+            <div class="link hidden"><a href="https://www.yandex.com" target="_blank">Yandex</a></div>
+            <div class="link hidden"><a href="https://www.dogpile.com" target="_blank">Dogpile</a></div>
+            <div class="link hidden"><a href="https://www.startpage.com" target="_blank">Startpage</a></div>
+            <div class="link hidden"><a href="https://www.qwant.com" target="_blank">Qwant</a></div>
+        </div>
+    </div>
+
+    <div class="category">
+        <h2 onclick="toggleCategory(this)">社交媒体</h2>
+        <div class="links">
+            <div class="link"><a href="https://www.weibo.com" target="_blank">微博</a></div>
+            <div class="link"><a href="https://www.facebook.com" target="_blank">Facebook</a></div>
+            <div class="link"><a href="https://www.twitter.com" target="_blank">Twitter</a></div>
+            <div class="link"><a href="https://www.zhihu.com" target="_blank">知乎</a></div>
+            <div class="link"><a href="https://www.instagram.com" target="_blank">Instagram</a></div>
+            <div class="link"><a href="https://www.linkedin.com" target="_blank">LinkedIn</a></div>
+            <div class="link hidden"><a href="https://www.reddit.com" target="_blank">Reddit</a></div>
+            <div class="link hidden"><a href="https://www.pinterest.com" target="_blank">Pinterest</a></div>
+            <div class="link hidden"><a href="https://www.tumblr.com" target="_blank">Tumblr</a></div>
+            <div class="link hidden"><a href="https://www.snapchat.com" target="_blank">Snapchat</a></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleCategory(header) {
+        const category = header.parentElement;
+        const links = category.querySelectorAll('.link');
+        const isCollapsed = header.classList.toggle('collapsed');
+
+        // 默认显示6个链接，其余隐藏
+        links.forEach((link, index) => {
+            if (index >= 6) {
+                if (isCollapsed) {
+                    link.classList.add('hidden'); // 折叠更多链接
+                } else {
+                    link.classList.remove('hidden'); // 显示更多链接
+                }
+            }
+        });
+    }
+
+    // 默认折叠所有分类的更多链接
+    document.querySelectorAll('.category h2').forEach(header => {
+        toggleCategory(header); // 初始状态为折叠
+    });
+</script>
+
+</body>
+</html>
+
