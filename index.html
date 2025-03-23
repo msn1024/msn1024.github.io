@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -19,24 +18,14 @@ body{
     background-color: #f9f9f9;
 }
 
-#logo{
-    width: 280px;
-    height: 100px;
-    margin-top: 70px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 #search-bar{
-    margin-top: 25px;
-    width: 320px;
+    max-width: 800px;
     height: auto;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
 #search-bar input {
-    width: 300px;
+    width: 280px;
     height: 24px;
     padding: 9px 10px;
 	font-family: 'Microsoft YaHei UI',arial,sans-serif;
@@ -49,11 +38,12 @@ body{
     vertical-align: middle;
     box-shadow: 1px 1px 3px rgb(160,160,160);
 	border-radius: 2px;
+	margin: 0 auto;
+	display: block;
 }
 
 #search-bar button {
-	margin-top: 20px;
-	margin-left: 0px;
+    margin-top: 10px;
     width: 60px;
     height: 35px;
     overflow: hidden;
@@ -76,58 +66,8 @@ body{
     box-shadow: 0px 0px 3px rgb(160,160,160);
 }
 
-#nav-panel{
-    margin-top: 5px;
-    margin-bottom: 5px;
-    width: 350px;
-    height: 180px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: auto;
-    padding-top: 10px;
-    <!---background-color: #F5F5F5;--->
-    <!---border: 1px solid rgb(210,210,210);--->
-}
-
-.nav-panel-line{
-    clear: both;
-    width: 400px;
-    height:1px;
-    background-color: #F0F0F0;
-}
-
-.nav-panel-item {
-    float: left;
-    display: block;
-    height: 40px;
-    width: 60px;
-    border: 1px solid transparent;
-    text-decoration: none;
-    color: #000;
-}
-
-.nav-panel-item:hover
-{
-    background-color: #F7F7F7;
-}
-
-.nav-panel-item-img{
-    float: left;
-    margin-top: 12px;
-    margin-left: 15px;
-}/* 带边框 */
-
-.nav-panel-item-txt {
-    float: middle;
-    margin-left: 5px;
-    line-height: 40px;
-    height: 40px;
-    font-size: 13px;
-    text-align:center;
-}
-
         .container {
-            max-width: 350px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 5px;
         }
@@ -145,7 +85,7 @@ body{
         }
         .category h2 {
             margin: 0 0 10px 0;
-            font-size: 12px;
+            font-size: 14px;
             color: #333;
             cursor: pointer;
             display: flex;
@@ -154,16 +94,20 @@ body{
         .category h2::after {
             content: "▼";
             margin-left: 10px;
-            font-size: 16px;
+            font-size: 12px;
             transition: transform 0.3s;
-        }
-        .category h2.collapsed::after {
             transform: rotate(-90deg);
+        }
+        .category h2.expanded::after {
+            transform: rotate(0deg);
         }
         .links {
             display: flex;
             flex-wrap: wrap;
-            gap: 5px;
+            gap: 3px;
+            max-height: 61px; /* 初始高度，显示2行 */
+            overflow: hidden; 
+            transition: max-height 0.3s ease;
         }
         .link1 {
             width: calc(25% - 10px); /* 每行显示4个链接 */
@@ -242,7 +186,7 @@ body{
         function do_Bing_search() {
             var search_txt = document.getElementById("search-bar-input").value;
 
-            var search_url = "https://cn.bing.com/search?q=" + search_txt;
+            var search_url = "https://cn.bing.com/search?q=" + search_txt + "&qs=n&FORM=BESBTB";;
             window.open(search_url);
         }
         function do_sogou_search() {
@@ -256,17 +200,11 @@ body{
 
             var search_url = "https://yz.m.sm.cn/s?q=" + search_txt;
             window.open(search_url);
-        }		
+        }
         function do_360_search() {
             var search_txt = document.getElementById("search-bar-input").value;
 
             var search_url = "https://www.so.com/s?q=" + search_txt;
-            window.open(search_url);
-        }
-        function do_taobao_search() {
-            var search_txt = document.getElementById("search-bar-input").value;
-
-            var search_url = "https://s.taobao.com/search?q=" + search_txt;
             window.open(search_url);
         }
         function do_zhihu_search() {
@@ -274,7 +212,7 @@ body{
 
             var search_url = "https://www.zhihu.com/search?type=content&q=" + search_txt;
             window.open(search_url);
-        }		
+        }
         function do_doubai_search() {
             var search_txt = document.getElementById("search-bar-input").value;
 
@@ -305,22 +243,16 @@ body{
             var search_url = "https://github.com/search?q=" + search_txt;
             window.open(search_url);
         }
-        function do_feng_search() {
-            var search_txt = document.getElementById("search-bar-input").value;
-
-            var search_url = "https://cn.bing.com/search?wd=site:bbs.feng.com%20" + search_txt;
-            window.open(search_url);
-        }
         function do_CSDN_search() {
             var search_txt = document.getElementById("search-bar-input").value;
 
             var search_url = "https://so.csdn.net/so/search/s.do?q=" + search_txt;
             window.open(search_url);
         }
-        function do_gfan_search() {
+        function do_toutiao_search() {
             var search_txt = document.getElementById("search-bar-input").value;
 
-            var search_url = "http://bbs.gfan.com/search?q=" + search_txt;
+            var search_url = "https://so.toutiao.com/search/?keyword=" + search_txt;
             window.open(search_url);
         }
         function do_taobaoH5_search() {
@@ -341,14 +273,26 @@ body{
         }
         function do_4pda_search() {
             var search_txt = document.getElementById("search-bar-input").value;
-            var search_url = "https://4pda.ru/forum/index.php?act=search&query=" + search_txt + "&username=&forums%5B%5D=all&subforums=1&source=all&sort=rel&result=posts";
+            var search_url = "https://4pda.to/forum/index.php?act=search&query=" + search_txt + "&username=&forums%5B%5D=all&subforums=1&source=all&sort=rel&result=posts";
             window.open(search_url);
         }
         function do_mydigit_search() {
             var search_txt = document.getElementById("search-bar-input").value;
-            var search_url = "https://cn.bing.com/search?q=" + search_txt + " site:mydigit.cn";
+            var search_url = "https://cn.bing.com/search?q=" + search_txt + " site:mydigit.cn&qs=n&FORM=BESBTB";
             window.open(search_url);
-        }      
+        }
+        function do_right_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://cn.bing.com/search?q=" + search_txt + " site:right.com.cn&qs=n&FORM=BESBTB";
+            window.open(search_url);
+        }
+        function do_mita_search() {
+            var search_txt = document.getElementById("search-bar-input").value;
+
+            var search_url = "https://metaso.cn/";
+            window.open(search_url);
+        }
 		function on_enter_key(){
 			if (event.keyCode==13){
 				var search_txt = document.getElementById("search-bar-input").value;
@@ -356,113 +300,96 @@ body{
 		//			alert("请输入搜索词 ! ");
 		//			return false;
 		//		}
-				var search_url = "https://www.baidu.com/s?wd=" + search_txt;
+				var search_url = "https://cn.bing.com/search?q=" + search_txt + "&qs=n&FORM=BESBTB";
 				window.open(search_url);
 			}
 		}
     </script>
 </head>
 <body>
-<!------------
-<div id="logo">
-    <img src="https://m.baidu.com/static/index/plus/plus_logo_web.png"  alt="tojohnonly">
-</div>
 
--------------->
 
 <div id="search-bar">
-  <input id="search-bar-input"  onkeydown="on_enter_key()" type="text" placeholder="早睡早起 ..." autocomplete="off"></BR></BR>
+  <input id="search-bar-input"  onkeydown="on_enter_key()" type="text" placeholder="早睡早起 ..." autocomplete="off"></BR>
     <button onclick="do_google_search()">google</button><a class="close"></a>
     <button onclick="do_sogou_search()">搜狗</button><a class="close"></a>
-	<button onclick="do_360_search()">360</button><a class="close"></a>
-	<button onclick="do_Bing_search()">Bing</button><a class="close"></a>
-	<button onclick="do_baidu_search()">百度</button><a class="close"></a>
-	<button onclick="do_weixin_search()">微信</button><a class="close"></a>
-	<button onclick="do_weibo_search()">微博</button><a class="close"></a>
-	<button onclick="do_zhihu_search()">知乎</button><a class="close"></a>
-	<button onclick="do_doubai_search()">豆瓣</button><a class="close"></a>
+    <button onclick="do_360_search()">360</button><a class="close"></a>
+    <button onclick="do_baidu_search()">百度</button><a class="close"></a>
+    <button onclick="do_Bing_search()">Bing</button><a class="close"></a>
+    <button onclick="do_weixin_search()">微信</button><a class="close"></a>
+    <button onclick="do_weibo_search()">微博</button><a class="close"></a>
+    <button onclick="do_zhihu_search()">知乎</button><a class="close"></a>
+    <button onclick="do_doubai_search()">豆瓣</button><a class="close"></a>
     <button onclick="do_shenma_search()">神马</button><a class="close"></a>
-	<button onclick="do_feng_search()">威锋</button><a class="close"></a>
-	<button onclick="do_gfan_search()">机锋</button><a class="close"></a>
-	<button onclick="do_CSDN_search()">CSDN</button><a class="close"></a>
-	<button onclick="do_github_search()">GitHub</button><a class="close"></a>
+    <button onclick="do_CSDN_search()">CSDN</button><a class="close"></a>
+    <button onclick="do_github_search()">GitHub</button><a class="close"></a>
     <button onclick="do_v2ex_search()">V2EX</button><a class="close"></a> 
-    <button onclick="do_taobaoH5_search()">淘宝</button><a class="close"></a> 
     <button onclick="do_sourceforge_search()">SOURCEFORGE</button><a class="close"></a>
     <button onclick="do_Yandex_search()">Yandex</button><a class="close"></a>
     <button onclick="do_4pda_search()">4PDA</button><a class="close"></a>
     <button onclick="do_mydigit_search()">数码家</button><a class="close"></a>
+    <button onclick="do_right_search()">恩山</button><a class="close"></a>
+    <button onclick="do_toutiao_search()">头条</button><a class="close"></a>
+    <button onclick="do_mita_search()">秘塔</button><a class="close"></a>
 </div>
-
-
-<!------------
-
-<div id="nav-panel">
-      <a class="nav-panel-item" title="百度翻译" href="https://fanyi.baidu.com/" target="_blank"><div class="nav-panel-item-txt">百度翻译</div></a>
-      <a class="nav-panel-item" title="淘宝" href="https://s.taobao.com/" target="_blank"><div class="nav-panel-item-txt">淘宝</div></a>
-      <a class="nav-panel-item" title="有道" href="http://dict.youdao.com/" target="_blank"><div class="nav-panel-item-txt">有道</div></a>
-      <a class="nav-panel-item" title="ithome" href="https://wap.ithome.com/" target="_blank"><div class="nav-panel-item-txt">ithome</div></a>
-   ,  <a class="nav-panel-item" title="iFanr" href="http://www.ifanr.com/" target="_blank"><div class="nav-panel-item-txt">iFanr</div></a>
-      <a class="nav-panel-item" title="TheVerge" href="https://www.theverge.com/" target="_blank"><div class="nav-panel-item-txt">TheVerge</div></a>
-      <a class="nav-panel-item" title="小众软件" href="https://www.appinn.com/" target="_blank"><div class="nav-panel-item-txt">小众</div></a>
-      <a class="nav-panel-item" title="oschina" href="http://tool.oschina.net/" target="_blank"><div class="nav-panel-item-txt">工具</div></a>
-      <a class="nav-panel-item" title="蓝点导航" href="https://nav.wsoso.com/" target="_blank"><div class="nav-panel-item-txt">蓝点</div></a>
-	  <a class="nav-panel-item" title="网站" href="http://w.li01.ren:3000/" target="_blank"><div class="nav-panel-item-txt">网站</div></a>
-	  <a class="nav-panel-item" title="酷安市场" href="https://www.coolapk.com/apk/" target="_blank"><div class="nav-panel-item-txt">酷安</div></a>
-	  <a class="nav-panel-item" title="百度风云榜" href="http://top.baidu.com/" target="_blank"><div class="nav-panel-item-txt">风云榜</div></a>
-	  <a class="nav-panel-item" title="今日热榜" href="https://tophub.today/" target="_blank"><div class="nav-panel-item-txt">今日热榜</div></a>
-	  <a class="nav-panel-item" title="淘宝h5" href="https://h5.m.taobao.com/" target="_blank"><div class="nav-panel-item-txt">淘宝h5</div></a>
-	  <a class="nav-panel-item" title="剪贴板" href="https://note.ms/15qq25" target="_blank"><div class="nav-panel-item-txt">剪贴板</div></a>
-	  <a class="nav-panel-item" title="其它" href="/qt.html" target="_blank"><div class="nav-panel-item-txt">其它</div></a>
-      <a class="nav-panel-item" title="其它" href="https://coding-pages-bucket-489242-1378169-8232-422291-1258452710.cos-website.ap-shanghai.myqcloud.com/so.html" target="_blank"><div class="nav-panel-item-txt">搜索</div></a>
-      <a class="nav-panel-item" title="龙轩导航" href="http://m.ilxdh.com/" target="_blank"><div class="nav-panel-item-txt">龙轩导航</div></a>
-      <a class="nav-panel-item" title="不死鸟导航" href="https://iao.su/909/" target="_blank"><div class="nav-panel-item-txt">不死鸟</div></a>
-</div>
-
--------------->
 
 <div class="container">
 
     <div class="category">
-        <h2 onclick="toggleCategory(this)">导航</h2>
+        <h2 onclick="toggleCategory(this)">资讯</h2>
         <div class="links">
-            <div class="link"><a href="https://iui.su/3700" target="_blank">资源导航</A></div>
-            <div class="link"><a href="https://nav.wsoso.com/" target="_blank">蓝点</a></div>
-            <div class="link"><a href="http://w.li01.ren:3000/" target="_blank">网站</a></div>
+            <div class="link"><a href="https://fanyi.sogou.com/" target="_blank">搜狐翻译</a></div>
+            <div class="link"><a href="https://wap.ithome.com/" target="_blank">ithome</A></div>
+            <div class="link"><a href="https://www.weibo.com" target="_blank">微博</a></div>
             <div class="link"><a href="http://top.baidu.com/" target="_blank">风云榜</a></div>
             <div class="link"><a href="https://tophub.today/" target="_blank">今日热榜</a></div>
-            <div class="link"><a href="http://m.ilxdh.com/" target="_blank">龙轩导航</a></div>
-            <div class="link"><a href="https://iao.su/909/" target="_blank">不死鸟</a></div>
-            <div class="link hidden"><a href="https://www.yandex.com" target="_blank">Yandex</a></div>
-        </div>
-    </div>
-    
-    <div class="category">
-        <h2 onclick="toggleCategory(this)">搜索引擎</h2>
-        <div class="links">
-            <div class="link"><a href="https://fanyi.baidu.com/" target="_blank">百度翻译</a></div>
-            <div class="link"><a href="https://fanyi.caiyunapp.com/" target="_blank">彩云翻译</a></div>
-            <div class="link"><a href="https://fanyi.sogou.com/" target="_blank">搜狐翻译</a></div>
-            <div class="link"><a href="https://translate.yandex.com/?source_lang=en&target_lang=zh" target="_blank">yandex翻译</A></div>
-            <div class="link"><a href="https://chat.scnet.cn/#/home" target="_blank">DeepSeek</A></div>
-            <div class="link"><a href="https://chat.baidu.com/deepseek?word=百度AI助手&isShowHello=1" target="_blank">百度AI</A></div>            
-            <div class="link"><a href="https://www.n.cn/" target="_blank">纳米</a></div>
-            <div class="link"><a href="https://datong.info/" target="_blank">大同</a></div>
-            <div class="link"><a href="https://www.doubao.com/chat/" target="_blank">豆包</a></div>
-            <div class="link"><a href="https://metaso.cn/" target="_blank">秘塔</a></div>
-            <div class="link"><a href="https://kaisouai.com/" target="_blank">开搜</a></div>      
-            <div class="link hidden"><a href="https://www.yandex.com" target="_blank">Yandex</a></div>
-            <div class="link"><a href="http://tool.oschina.net/" target="_blank">工具</A></div>
-            <div class="link"><a href="https://s.taobao.com/" target="_blank">淘宝</A></div>
-            <div class="link"><a href="http://dict.youdao.com/" target="_blank">有道</A></div>
-            <div class="link"><a href="https://wap.ithome.com/" target="_blank">ithome</A></div>
+            <div class="link"><a href="https://www.txrjy.com/" target="_blank">通信人</a></div>
+            <div class="link"><a href="http://wuyou.net/" target="_blank">无忧论坛</A></div>
             <div class="link"><a href="http://www.ifanr.com/" target="_blank">iFanr</A></div>
             <div class="link"><a href="https://www.theverge.com/" target="_blank">TheVerge</A></div>
             <div class="link"><a href="https://www.appinn.com/" target="_blank">小众</A></div>
             <div class="link"><a href="https://www.coolapk.com/apk/" target="_blank">酷安</A></div>
-            <div class="link"><a href="https://h5.m.taobao.com/" target="_blank">淘宝h5</A></div>
+            <div class="link"><a href="https://www.52pojie.cn/" target="_blank">吾爱破解</A></div>
+            <div class="link"><a href="https://bbs.kafan.cn/" target="_blank">卡饭</A></div>
+            <div class="link"><a href="https://bbs.pcbeta.com/" target="_blank">远景</A></div>
+            <div class="link"><a href="https://segmentfault.com/" target="_blank">思否社区</A></div>
+            <div class="link"><a href="https://www.ali213.net/" target="_blank">游侠游戏</A></div>
+            <div class="link"><a href="https://bbs.nga.cn/" target="_blank">NGA游戏</A></div>
+            <div class="link"><a href="https://bbs.3dmgame.com/" target="_blank">3DM游戏</A></div>
+            <div class="link"><a href="https://www.iplaysoft.com" target="_blank">异次元软件</A></div>
+            <div class="link"><a href="https://dl.lancdn.com/landian/" target="_blank">蓝点下载</A></div>
+            <div class="link"><a href="https://softwareupdate.vmware.com/cds/vmw-desktop/ws/" target="_blank">vmware下载</A></div>
+        </div>
+    </div>
+
+    <div class="category">
+        <h2 onclick="toggleCategory(this)">搜索引擎</h2>
+        <div class="links">
+            <div class="link"><a href="https://chat.scnet.cn/#/home" target="_blank">DeepSeek</A></div>
+            <div class="link"><a href="https://chat.baidu.com/deepseek?word=百度AI助手&isShowHello=1" target="_blank">百度AI</A></div>
+            <div class="link"><a href="https://www.doubao.com/chat/" target="_blank">豆包</a></div>
+            <div class="link"><a href="https://metaso.cn/" target="_blank">秘塔</a></div>
+            <div class="link"><a href="https://www.n.cn/" target="_blank">纳米</a></div>
+            <div class="link"><a href="https://datong.info/" target="_blank">大同</a></div>
+            <div class="link"><a href="https://www.yandex.com" target="_blank">Yandex</a></div>
+            <div class="link"><a href="http://tool.oschina.net/" target="_blank">工具</A></div>
+            <div class="link"><a href="http://dict.youdao.com/" target="_blank">有道词典</A></div>
             <div class="link"><a href="https://note.ms/15qq25" target="_blank">剪贴板</A></div>
-            <div class="link"><a href="/qt.html" target="_blank">其它</A></div>
+        </div>
+    </div>
+
+    <div class="category">
+        <h2 onclick="toggleCategory(this)">导航</h2>
+        <div class="links">
+            <div class="link"><a href="https://fanyi.baidu.com/" target="_blank">百度翻译</a></div>
+            <div class="link"><a href="https://fanyi.caiyunapp.com/" target="_blank">彩云翻译</a></div>
+            <div class="link"><a href="https://translate.yandex.com/?source_lang=en&target_lang=zh" target="_blank">yandex翻译</A></div>
+            <div class="link"><a href="https://iui.su/3700" target="_blank">资源导航</A></div>
+            <div class="link"><a href="https://nav.wsoso.com/" target="_blank">蓝点</a></div>
+            <div class="link"><a href="http://w.li01.ren:3000/" target="_blank">网站</a></div>
+            <div class="link"><a href="https://www.aig123.com/" target="_blank">AI导航</a></div>
+            <div class="link"><a href="http://m.ilxdh.com/" target="_blank">龙轩导航</a></div>
+            <div class="link"><a href="https://iao.su/909/" target="_blank">不死鸟</a></div>
             <div class="link"><a href="https://coding-pages-bucket-489242-1378169-8232-422291-1258452710.cos-website.ap-shanghai.myqcloud.com/so.html" target="_blank">搜索</A></div>
         </div>
     </div>
@@ -470,17 +397,8 @@ body{
     <div class="category">
         <h2 onclick="toggleCategory(this)">社交媒体</h2>
         <div class="links">
-            <div class="link"><a href="https://www.weibo.com" target="_blank">微博</a></div>
-            <div class="link"><a href="https://www.zhihu.com" target="_blank">知乎</a></div>
             <div class="link"><a href="https://yandex.com/search/?text=" target="_blank">yandex图搜</A></div>
-            <div class="link hidden"><a href="https://webdata.cqccms.com.cn/webdata/query/CCCCerti.do?keyword=%E7%A7%91%E5%A4%A7%E8%AE%AF%E9%A3%9E&chaxuntype=appname&Submit=%E7%82%B9%E5%87%BB%E6%9F%A5%E8%AF%A2#" target="_blank">3C证书</A></div>
-            <div class="link"><a href="https://www.sdmap.gov.cn/tdtwx2021/index.html#/map/main" target="_blank">天地图 山东</A></div>
-            <div class="link"><a href="https://www.geamap.com/en/soviet#2/37.3/-4.9" target="_blank">GeaMap</A></div>
-            <div class="link"><a href="https://nakarte.me/#m=2/32.03583/85.36286&l=T" target="_blank">nakarte</A></div>
-            <div class="link"><a href="https://www.osgeo.cn/map/mb10c" target="_blank">各类地图</A></div>
-            <div class="link"><a href="https://online.geovisearth.com/browser" target="_blank">Earth星图地球</A></div>
-            <div class="link"><a href="https://map.qiekub.org/" target="_blank">QueerMap</A></div>
-            <div class="link"><a href="https://tracesmap.com/#2/50.6788/76.0715/normal/topo/none" target="_blank">多语言osm地图</A></div>
+            <div class="link"><a href="https://webdata.cqccms.com.cn/webdata/query/CCCCerti.do?keyword=%E7%A7%91%E5%A4%A7%E8%AE%AF%E9%A3%9E&chaxuntype=appname&Submit=%E7%82%B9%E5%87%BB%E6%9F%A5%E8%AF%A2#" target="_blank">3C证书</A></div>
             <div class="link"><a href="https://www.pansearch.me/" target="_blank">网盘搜索</A></div>
             <div class="link"><a href="https://www.yunso.net/" target="_blank">网盘搜索 </A></div>
             <div class="link"><a href="https://www.xuebapan.com/" target="_blank">学霸盘</A></div>
@@ -493,34 +411,76 @@ body{
             <div class="link"><a href="https://mp.weixin.qq.com/mp/homepage?search_click_id=11374589706596574486-1723133310827-9748075761&__biz=MzA4NDYzNDEwMA==&hid=31&sn=6876ea32532606dde32bb82c169dc1cf&scene=18&devicetype=android-34&version=2800315a&lang=zh_CN&nettype=WIFI&ascene=65&pass_ticket=nssP7CzOPXirCFIWlsn135WofDMV6K6sR7D7e3OYxUsOzIcRewHM09OKCdUVXEVw&wx_header=3" target="_blank">楷书入门</A></div>
             <div class="link"><a href="https://weixin65778.video-rays.com/st/W65778/C1000008899/A1642669/special?timestamp=1724400534559" target="_blank">丽声瑞格自然拼读</A></div>
             <div class="link"><a href="https://www.sejda.com/split-pdf-down-the-middle" target="_blank">剪裁试卷A3-A4</A></div>
-            <div class="link"><a href="https://www.mydrivers.com/zhuanti/tianti/gpu/index.html" target="_blank">桌面显卡性能天梯图</A></div>
             <div class="link"><a href="https://rank.kkj.cn/" target="_blank"1734479877">CPU天梯榜</A></div>
         </div>
     </div>
+
+    <div class="category">
+        <h2 onclick="toggleCategory(this)">在线地图</h2>
+        <div class="links">
+            <div class="link"><a href="https://www.sdmap.gov.cn/tdtwx2021/index.html#/map/main" target="_blank">天地图 山东</A></div>
+            <div class="link"><a href="https://online.geovisearth.com/browser" target="_blank">Earth星图地球</A></div>
+            <div class="link"><a href="https://www.geamap.com/en/soviet#2/37.3/-4.9" target="_blank">GeaMap</A></div>
+            <div class="link"><a href="https://nakarte.me/#m=2/32.03583/85.36286&l=T" target="_blank">nakarte</A></div>
+            <div class="link"><a href="https://map.qiekub.org/" target="_blank">QueerMap</A></div>
+            <div class="link"><a href="https://tracesmap.com/#2/50.6788/76.0715/normal/topo/none" target="_blank">多语言osm地图</A></div>
+            <div class="link"><a href="https://www.osgeo.cn/map/mb10c" target="_blank">各类地图</A></div>
+        </div>
+    </div>
+
+    <div class="category">
+        <h2 onclick="toggleCategory(this)">开源镜像</h2>
+        <div class="links">
+            <div class="link"><a href="https://mirrors.cloud.tencent.com/" target="_blank">腾讯</A></div>
+            <div class="link"><a href="http://mirrors.163.com" target="_blank">网易</A></div>
+            <div class="link"><a href="https://mirrors.tuna.tsinghua.edu.cn/" target="_blank">清华大学</A></div>
+            <div class="link"><a href="https://mirror.iscas.ac.cn/" target="_blank">科学院软研所</A></div>
+            <div class="link"><a href="https://developer.aliyun.com/mirror/" target="_blank">阿里</A></div>
+            <div class="link"><a href="https://mirrors.huaweicloud.com/home" target="_blank">华为</A></div>
+            <div class="link"><a href="http://mirrors.cmecloud.cn/" target="_blank">移动</A></div>
+            <div class="link"><a href="http://mirror.azure.cn/" target="_blank">开源社</A></div>
+            <div class="link"><a href="http://mirrors.sohu.com" target="_blank">搜狐</A></div>
+            <div class="link"><a href="https://mirrors.cernet.edu.cn/" target="_blank">校园网联合</A></div>
+            <div class="link"><a href="https://mirrors.ustc.edu.cn/" target="_blank">中国科学技术大学</A></div>
+            <div class="link"><a href="https://mirrors.zju.edu.cn/" target="_blank">浙江大学</A></div>
+            <div class="link"><a href="https://mirror.sjtu.edu.cn/" target="_blank">上海交通大学</A></div>
+            <div class="link"><a href="https://mirrors.sdu.edu.cn/" target="_blank">山东大学</A></div>
+            <div class="link"><a href="https://mirror.nju.edu.cn/" target="_blank">南京大学</A></div>
+            <div class="link"><a href="https://mirrors.qlu.edu.cn/" target="_blank">齐鲁工业大学</A></div>
+            <div class="link"><a href="https://mirrors.bfsu.edu.cn/" target="_blank">北京外国语大学</A></div>
+            <div class="link"><a href="https://mirror.bjtu.edu.cn/" target="_blank">北京交通大学</A></div>
+            <div class="link"><a href="https://mirrors.xjtu.edu.cn/" target="_blank">西安交通大学</A></div>
+            <div class="link"><a href="https://mirrors.jlu.edu.cn/" target="_blank">吉林大学</A></div>
+            <div class="link"><a href="https://mirror.lzu.edu.cn/" target="_blank">兰州大学</A></div>
+            <div class="link"><a href="https://mirrors.cqupt.edu.cn/" target="_blank">重庆邮电大学</A></div>
+            <div class="link"><a href="https://mirrors.cqu.edu.cn/" target="_blank">重庆大学</A></div>
+            <div class="link"><a href="https://mirrors.scau.edu.cn/" target="_blank">华南农业大学</A></div>
+            <div class="link"><a href="https://mirrors.sustech.edu.cn/" target="_blank">南方科技大学</A></div>
+            <div class="link"><a href="https://mirrors.njtech.edu.cn/" target="_blank">南京工业大学</A></div>
+            <div class="link"><a href="https://mirrors.nwafu.edu.cn/" target="_blank">西北农林科技大学</A></div>
+            <div class="link"><a href="https://mirrors.pku.edu.cn/" target="_blank">北京大学</A></div>
+            <div class="link"><a href="https://mirrors.shanghaitech.edu.cn/" target="_blank">上海科技大学</A></div>
+            <div class="link"><a href="https://mirrors.sustech.edu.cn/" target="_blank">南方科技大学</A></div>
+            <div class="link"><a href="https://mirrors.jxust.edu.cn/" target="_blank">江西理工大学</A></div>
+            <div class="link"><a href="https://mirrors.jcut.edu.cn/" target="_blank">荆楚理工学院</A></div>
+            <div class="link"><a href="https://mirror.nyist.edu.cn/" target="_blank">南阳理工学院</A></div>
+            <div class="link"><a href="http://mirrors.neusoft.edu.cn/" target="_blank">大连东软信息学院</A></div>
+        </div>
+    </div>
+
 </div>
 
-<script>
-    function toggleCategory(header) {
-        const category = header.parentElement;
-        const links = category.querySelectorAll('.link');
-        const isCollapsed = header.classList.toggle('collapsed');
-
-        // 默认显示6个链接，其余隐藏
-        links.forEach((link, index) => {
-            if (index >= 6) {
-                if (isCollapsed) {
-                    link.classList.add('hidden'); // 折叠更多链接
-                } else {
-                    link.classList.remove('hidden'); // 显示更多链接
-                }
+    <script>
+        function toggleCategory(element) {
+            const links = element.nextElementSibling;
+            if (links.style.maxHeight) {
+                links.style.maxHeight = null; // 收起
+                element.classList.remove('expanded');
+            } else {
+                links.style.maxHeight = links.scrollHeight + "px"; // 展开
+                element.classList.add('expanded');
             }
-        });
-    }
-
-    // 默认折叠所有分类的更多链接
-    document.querySelectorAll('.category h2').forEach(header => {
-        toggleCategory(header); // 初始状态为折叠
-    });
-</script>
+        }
+    </script>
 </body>
 </html>
