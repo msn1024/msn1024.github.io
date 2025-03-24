@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的搜索</title>
+   	<link rel="shortcut icon" href="favico.ico"/>
+   	
+	  <style>
+	  
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 5px;
+        }
+        .container1 {
+            max-width: 800px; /* 带边框 */
+            margin: 0 auto;
+            padding: 5px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .category {
+            margin-bottom: 5px;
+        }
+        .category h2 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .category h2::after {
+            content: "▼";
+            margin-left: 10px;
+            font-size: 12px;
+            transition: transform 0.3s;
+            transform: rotate(-90deg);
+        }
+        .category h2.expanded::after {
+            transform: rotate(0deg);
+        }
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+            max-height: 61px; /* 初始高度，显示2行 */
+            overflow: hidden; 
+            transition: max-height 0.3s ease;
+        }
+        .link1 {
+            width: calc(25% - 10px); /* 每行显示4个链接 */
+            padding: 10px;
+            background-color: #f5f5f5;  /* 蓝0073e6;绿28a745;红ff4d4d;蓝005bb5; */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .link {
+            background-color: #0073e6;  /* 背景色为深蓝色（0073e6类似企业级配色） 绿28a745;红ff4d4d;蓝005bb5;  */
+            color: #fff;  /* fff文字颜色为纯白 */
+            border: none; /* 无边框（移除默认边框） */
+            padding: 5px 10px;  /* 内边距：上下5px，左右10px */
+            border-radius: 3px; /* 圆角3像素（轻微圆润效果） */
+            cursor: pointer;  /* 鼠标悬停时显示手型指针（提示可点击） */
+            font-size: 12px;
+            text-align: center;
+            margin-left: 5px; /* 左侧外间距5px（与其他元素保持间隔） */
+            margin-bottom: 5px; /* 下侧外间距5px（与其他元素保持间隔） */
+        }
+        .link a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 14px;
+        }
+        .link a:hover {
+            text-decoration: underline;
+        }
+        .hidden {
+            display: none;
+        }
+
+
+	</style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="category">
+        <h2 onclick="toggleCategory(this)">资讯</h2>
+        <div class="links">
+            <div class="link"><a href="https://www.lxnsm.com/" target="_blank">流星办公</A></div>
+            <div class="link"><a href="http://guozhivip.com/" target="_blank">果汗导航</A></div>
+            <div class="link"><a href="https://www.jigdh.com/" target="_blank">极光导航</A></div>
+            <div class="link"><a href="https://hao.miwap.com/" target="_blank">觅我导航</A></div>
+            <div class="link"><a href="https://m.antso.net/" target="_blank">蚂蚁导航</A></div>
+            <div class="link"><a href="https://aitaoh.com/" target="_blank">智慧导航</A></div>
+            <div class="link"><a href="https://z.caigamer.com/" target="_blank">菜玩导航</A></div>
+            <div class="link"><a href="https://www.goodurl.cn/" target="_blank">好网址</A></div>
+            <div class="link"><a href="https://www.kulayu.com/" target="_blank">酷啦鱼</A></div>
+            <div class="link"><a href="https://nav.qinight.com/" target="_blank">柒夜导航</A></div>
+            <div class="link"><a href="https://www.plnav.com/" target="_blank">迷鹿导航</A></div>
+            <div class="link"><a href="https://biemoyu.com/" target="_blank">别摸鱼</A></div>
+            <div class="link"><a href="https://tv.baozangdh.com/" target="_blank">影视宝库</A></div>
+            <div class="link"><a href="https://baozangdh.com/" target="_blank">宝藏导航</A></div>
+            <div class="link"><a href="https://www.m123.com/" target="_blank">M123跨境</A></div>
+            <div class="link"><a href="https://www.17keyan.com/" target="_blank">17科研</A></div>
+            <div class="link"><a href="https://drugx.cn/" target="_blank">药研导航</A></div>
+            <div class="link"><a href="https://adzhp.cc/" target="_blank">爱达杂货铺</A></div>
+            <div class="link"><a href="https://hao.desigx.com/" target="_blank">设计导航</A></div>
+            <div class="link"><a href="https://wndh.net/" target="_blank">万能导航</A></div>
+            <div class="link"><a href="https://tool.zjnav.com/" target="_blank">终极导航</A></div>
+            <div class="link"><a href="https://www.xielunyan.com/" target="_blank">写轮眼导航</A></div>
+            <div class="link"><a href="https://ipath8.com/" target="_blank">爱路网址</A></div>
+        </div>
+    </div>
+
+</div>
+
+    <script>
+        function toggleCategory(element) {
+            const links = element.nextElementSibling;
+            if (links.style.maxHeight) {
+                links.style.maxHeight = null; // 收起
+                element.classList.remove('expanded');
+            } else {
+                links.style.maxHeight = links.scrollHeight + "px"; // 展开
+                element.classList.add('expanded');
+            }
+        }
+    </script>
+</body>
+</html>
