@@ -210,7 +210,7 @@ body{
         function do_zhihu_search() {
             var search_txt = document.getElementById("search-bar-input").value;
 
-            var search_url = "https://www.zhihu.com/search?type=content&q=" + search_txt;
+            var search_url = "https://cn.bing.com/search?q=" + search_txt + " site:zhihu.com&qs=n&FORM=BESBTB";
             window.open(search_url);
         }
         function do_doubai_search() {
@@ -338,7 +338,6 @@ body{
     <div class="category">
         <h2 onclick="toggleCategory(this)">资讯</h2>
         <div class="links">
-            <div class="link"><a href="https://fanyi.sogou.com/" target="_blank">搜狐翻译</a></div>
             <div class="link"><a href="https://wap.ithome.com/" target="_blank">ithome</A></div>
             <div class="link"><a href="https://www.weibo.com" target="_blank">微博</a></div>
             <div class="link"><a href="http://top.baidu.com/" target="_blank">风云榜</a></div>
@@ -346,16 +345,17 @@ body{
             <div class="link"><a href="https://www.txrjy.com/" target="_blank">通信人</a></div>
             <div class="link"><a href="http://wuyou.net/" target="_blank">无忧论坛</A></div>
             <div class="link"><a href="http://www.ifanr.com/" target="_blank">iFanr</A></div>
-            <div class="link"><a href="https://www.theverge.com/" target="_blank">TheVerge</A></div>
-            <div class="link"><a href="https://www.appinn.com/" target="_blank">小众</A></div>
-            <div class="link"><a href="https://www.coolapk.com/apk/" target="_blank">酷安</A></div>
             <div class="link"><a href="https://www.52pojie.cn/" target="_blank">吾爱破解</A></div>
+            <div class="link"><a href="https://bbs.kanxue.com/" target="_blank">看雪</A></div>
             <div class="link"><a href="https://bbs.kafan.cn/" target="_blank">卡饭</A></div>
             <div class="link"><a href="https://bbs.pcbeta.com/" target="_blank">远景</A></div>
             <div class="link"><a href="https://segmentfault.com/" target="_blank">思否社区</A></div>
+            <div class="link"><a href="https://so.gitee.com/" target="_blank">gitee</A></div>
             <div class="link"><a href="https://www.ali213.net/" target="_blank">游侠游戏</A></div>
             <div class="link"><a href="https://bbs.nga.cn/" target="_blank">NGA游戏</A></div>
             <div class="link"><a href="https://bbs.3dmgame.com/" target="_blank">3DM游戏</A></div>
+            <div class="link"><a href="https://www.appinn.com/" target="_blank">小众</A></div>
+            <div class="link"><a href="https://www.coolapk.com/apk/" target="_blank">酷安</A></div>
             <div class="link"><a href="https://www.iplaysoft.com" target="_blank">异次元软件</A></div>
             <div class="link"><a href="https://dl.lancdn.com/landian/" target="_blank">蓝点下载</A></div>
             <div class="link"><a href="https://softwareupdate.vmware.com/cds/vmw-desktop/ws/" target="_blank">vmware下载</A></div>
@@ -363,7 +363,7 @@ body{
     </div>
 
     <div class="category">
-        <h2 onclick="toggleCategory(this)">搜索引擎</h2>
+        <h2 onclick="toggleCategory(this)">AI搜索</h2>
         <div class="links">
             <div class="link"><a href="https://chat.scnet.cn/#/home" target="_blank">DeepSeek</A></div>
             <div class="link"><a href="https://chat.baidu.com/deepseek?word=百度AI助手&isShowHello=1" target="_blank">百度AI</A></div>
@@ -372,15 +372,14 @@ body{
             <div class="link"><a href="https://www.n.cn/" target="_blank">纳米</a></div>
             <div class="link"><a href="https://datong.info/" target="_blank">大同</a></div>
             <div class="link"><a href="https://www.yandex.com" target="_blank">Yandex</a></div>
-            <div class="link"><a href="http://tool.oschina.net/" target="_blank">工具</A></div>
-            <div class="link"><a href="http://dict.youdao.com/" target="_blank">有道词典</A></div>
-            <div class="link"><a href="https://note.ms/15qq25" target="_blank">剪贴板</A></div>
+            <div class="link"><a href="https://kimi.moonshot.cn/" target="_blank">Kimi</A></div>
         </div>
     </div>
 
     <div class="category">
         <h2 onclick="toggleCategory(this)">导航</h2>
         <div class="links">
+            <div class="link"><a href="https://fanyi.sogou.com/" target="_blank">搜狐翻译</a></div>
             <div class="link"><a href="https://fanyi.baidu.com/" target="_blank">百度翻译</a></div>
             <div class="link"><a href="https://fanyi.caiyunapp.com/" target="_blank">彩云翻译</a></div>
             <div class="link"><a href="https://translate.yandex.com/?source_lang=en&target_lang=zh" target="_blank">yandex翻译</A></div>
@@ -391,16 +390,24 @@ body{
             <div class="link"><a href="http://m.ilxdh.com/" target="_blank">龙轩导航</a></div>
             <div class="link"><a href="https://iao.su/909/" target="_blank">不死鸟</a></div>
             <div class="link"><a href="https://coding-pages-bucket-489242-1378169-8232-422291-1258452710.cos-website.ap-shanghai.myqcloud.com/so.html" target="_blank">搜索</A></div>
+            <div class="link"><a href="https://mail.163.com/" target="_blank">163邮</A></div>
+            <div class="link"><a href="https://mail.qq.com/" target="_blank">QQ邮</a></div>
+            <div class="link"><a href="https://mail.189.cn/" target="_blank">189邮</a></div>
+            <div class="link"><a href="https://mail.139.com/" target="_blank">139邮</a></div>
+            <div class="link"><a href="https://mail.sina.cn/" target="_blank">新浪邮</a></div>
+            <div class="link"><a href="https://outlook.live.com/" target="_blank">OutLook</a></div>
         </div>
     </div>
 
     <div class="category">
-        <h2 onclick="toggleCategory(this)">社交媒体</h2>
+        <h2 onclick="toggleCategory(this)">工具</h2>
         <div class="links">
+            <div class="link"><a href="https://www.yunso.net/" target="_blank">小云盘搜 </A></div>
             <div class="link"><a href="https://yandex.com/search/?text=" target="_blank">yandex图搜</A></div>
+            <div class="link"><a href="https://rank.kkj.cn/" target="_blank"1734479877">CPU天梯榜</A></div>
             <div class="link"><a href="https://webdata.cqccms.com.cn/webdata/query/CCCCerti.do?keyword=%E7%A7%91%E5%A4%A7%E8%AE%AF%E9%A3%9E&chaxuntype=appname&Submit=%E7%82%B9%E5%87%BB%E6%9F%A5%E8%AF%A2#" target="_blank">3C证书</A></div>
             <div class="link"><a href="https://www.pansearch.me/" target="_blank">网盘搜索</A></div>
-            <div class="link"><a href="https://www.yunso.net/" target="_blank">网盘搜索 </A></div>
+            <div class="link"><a href="https://alipansou.com/" target="_blank">猫狸盘搜 </A></div>
             <div class="link"><a href="https://www.xuebapan.com/" target="_blank">学霸盘</A></div>
             <div class="link"><a href="https://www.leijing.xyz/index" target="_blank">雷鲸小站</A></div>
             <div class="link"><a href="http://hmxz.org/" target="_blank"1726844472">海绵小站天翼资源</A></div>
@@ -411,7 +418,14 @@ body{
             <div class="link"><a href="https://mp.weixin.qq.com/mp/homepage?search_click_id=11374589706596574486-1723133310827-9748075761&__biz=MzA4NDYzNDEwMA==&hid=31&sn=6876ea32532606dde32bb82c169dc1cf&scene=18&devicetype=android-34&version=2800315a&lang=zh_CN&nettype=WIFI&ascene=65&pass_ticket=nssP7CzOPXirCFIWlsn135WofDMV6K6sR7D7e3OYxUsOzIcRewHM09OKCdUVXEVw&wx_header=3" target="_blank">楷书入门</A></div>
             <div class="link"><a href="https://weixin65778.video-rays.com/st/W65778/C1000008899/A1642669/special?timestamp=1724400534559" target="_blank">丽声瑞格自然拼读</A></div>
             <div class="link"><a href="https://www.sejda.com/split-pdf-down-the-middle" target="_blank">剪裁试卷A3-A4</A></div>
-            <div class="link"><a href="https://rank.kkj.cn/" target="_blank"1734479877">CPU天梯榜</A></div>
+            <div class="link"><a href="https://tv.cctv.com/live/" target="_blank">CCTV电视</A></div>
+            <div class="link"><a href="https://www.lddgo.net/" target="_blank">各类工具</A></div>
+            <div class="link"><a href="https://tool.lu/" target="_blank">tool.lu工具</A></div>
+            <div class="link"><a href="http://tool.oschina.net/" target="_blank">oschina工具</A></div>
+            <div class="link"><a href="https://mtool.chinaz.com/" target="_blank">站长工具</A></div>
+            <div class="link"><a href="http://dict.youdao.com/" target="_blank">有道词典</A></div>
+            <div class="link"><a href="https://note.ms/15qq25" target="_blank">剪贴板</A></div>
+
         </div>
     </div>
 
@@ -420,6 +434,9 @@ body{
         <div class="links">
             <div class="link"><a href="https://www.sdmap.gov.cn/tdtwx2021/index.html#/map/main" target="_blank">天地图 山东</A></div>
             <div class="link"><a href="https://online.geovisearth.com/browser" target="_blank">Earth星图地球</A></div>
+            <div class="link"><a href="https://m.amap.com/" target="_blank">高德</A></div>
+            <div class="link"><a href="https://map.qq.com/" target="_blank">QQ地图</A></div>
+            <div class="link"><a href="https://map.baidu.com/" target="_blank">百度地图</A></div>
             <div class="link"><a href="https://www.geamap.com/en/soviet#2/37.3/-4.9" target="_blank">GeaMap</A></div>
             <div class="link"><a href="https://nakarte.me/#m=2/32.03583/85.36286&l=T" target="_blank">nakarte</A></div>
             <div class="link"><a href="https://map.qiekub.org/" target="_blank">QueerMap</A></div>
