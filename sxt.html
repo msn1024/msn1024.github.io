@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小学四则运算练习题生成器</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <style>
+        @media print {
+            #controls {
+                display: none;
+            }
+            .page {
+                page-break-after: always;
+                border: none; /* 去除打印边框 */
+            }
+            .header {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 0rem;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div id="controls" class="p-8 bg-white shadow-md rounded-md m-2">
+        <h1 class="text-2xl font-bold mb-4">小学四则运算练习题生成器</h1>
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2">运算类型</label>
+            <input type="checkbox" id="add" checked> <label for="add">加法</label>
+            <input type="checkbox" id="sub" checked> <label for="sub">减法</label>
+            <input type="checkbox" id="mul" checked> <label for="mul">乘法</label>
+            <input type="checkbox" id="div" checked> <label for="div">除法</label>
+        </div>
+        <div class="mb-4">
+            <input type="checkbox" id="decimal"> <label for="decimal">允许小数</label>
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2">运算数数量</label>
+            <input type="number" id="numCount" value="2" min="2">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2">运算数值范围</label>
+            <input type="number" id="minValue" value="1"> - <input type="number" id="maxValue" value="20">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2">出题数量</label>
+            <input type="number" id="questionCount" value="500">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2">每页打印题目数量</label>
+            <input type="number" id="printPerPage" value="60">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2">打印列数</label>
+            <input type="number" id="printColumns" value="3">
+        </div>
+        <button id="generate" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">生成题目</button>
+        <button id="printBtn" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-4">打印题目</button>
+    </div>
+    <div id="questions" class="p-8  m-2"></div>
+    <!--
+    <div id="questions" class="p-8 bg-white白色 shadow-md阴影 rounded-md圆角 m-8"></div>
+    -->
+
+    <script>
+        const generateBtn = document.getElementById('generate');
+        const printBtn = document.getElementById('printBtn');
+        const questionsDiv = document.getElementById('questions');
+
+        generateBtn.addEventListener('click', generateQuestions);
+        printBtn.addEventListener('click', () => window.print());
+
+        function generateQuestions() {
+            const add = document.getElementById('add').checked;
+            const sub = document.getElementById('sub').checked;
+            const mul = document.getElementById('mul').checked;
+            const div = document.getElementById('div').checked;
+            const decimal = document.getElementById('decimal').checked;
+            const numCount = parseInt(document.getElementById('numCount').value);
+            const minValue = parseInt(document.getElementById('minValue').value);
+            const maxValue = parseInt(document.getElementById('maxValue').value);
+            const questionCount = parseInt(document.getElementById('questionCount').value);
+            const printPerPage = parseInt(document.getElementById('printPerPage').value);
+            const printColumns = parseInt(document.getElementById('printColumns').value);
+
+            const operators = [];
+            if (add) operators.push('+');
+            if (sub) operators.push('-');
+            if (mul) operators.push('×');
+            if (div) operators.push('÷');
+
+            let allQuestions = [];
+            for (let i = 0; i < questionCount; i++) {
+                let numbers = [];
+                for (let j = 0; j < numCount; j++) {
+                    let num;
+                    if (decimal) {
+                        num = (Math.random() * (maxValue - minValue) + minValue).toFixed(2);
+                    } else {
+                        num = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
+                    }
+                    numbers.push(num);
+                }
+
+                let question = '';
+                let result = parseFloat(numbers[0]);
+                for (let k = 0; k < numbers.length - 1; k++) {
+                    let operator;
+                    do {
+                        operator = operators[Math.floor(Math.random() * operators.length)];
+                        if (operator === '-') {
+                            if (result < parseFloat(numbers[k + 1])) {
+                                continue;
+                            }
+                        } else if (operator === '÷') {
+                            if (!decimal && parseFloat(numbers[k + 1])!== 0 && result % parseFloat(numbers[k + 1])!== 0) {
+                                continue;
+                            }
+                        }
+                        break;
+                    } while (true);
+
+                    if (k > 0) {
+                        question += ' ';
+                    }
+                    question += result;
+                    question += ` ${operator} `;
+
+                    if (operator === '+') {
+                        result += parseFloat(numbers[k + 1]);
+                    } else if (operator === '-') {
+                        result -= parseFloat(numbers[k + 1]);
+                    } else if (operator === '×') {
+                        result *= parseFloat(numbers[k + 1]);
+                    } else if (operator === '÷') {
+                        result /= parseFloat(numbers[k + 1]);
+                    }
+                }
+                question += numbers[numbers.length - 1];
+                question += ' = ';
+                allQuestions.push(question);
+            }
+
+            let pages = [];
+            for (let i = 0; i < allQuestions.length; i += printPerPage) {
+                pages.push(allQuestions.slice(i, i + printPerPage));
+            }
+
+            let html = '';
+            pages.forEach((page, index) => {
+                let pageQuestions = '';
+                page.forEach(question => {
+                    pageQuestions += `<span class="block mb-2">${question}</span>`;
+                });
+                html += `
+                    <div class="page grid grid-cols-${printColumns} gap-4">
+                        <div class="header col-span-${printColumns}">
+                            <span>姓名：__________</span>
+                            <span>日期：__________</span>
+                            <span>用时：__________</span>
+                            <span>正确：__________题</span>
+                        </div>
+                        ${pageQuestions}
+                    </div>
+                `;
+            });
+
+            questionsDiv.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
+    
